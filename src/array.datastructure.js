@@ -6,7 +6,9 @@ class ArrayDataStructure {
     this.data = {};
   }
 
-  get() { }
+  get(index) {
+    return this.data[index];
+  }
 
   push() { }
 
