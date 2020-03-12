@@ -1,7 +1,7 @@
 // Here we are going to implement array
 
 class ArrayDataStructure {
-  constructor() {
+  constructor(initialData) {
     this.length = 0;
     this.data = {};
   }
@@ -10,7 +10,18 @@ class ArrayDataStructure {
     return this.data[index];
   }
 
-  push() { }
+  push(item) {
+    this.data[this.length] = item;
+    this.length++;
 
-  pop() { }
+    return this.data;
+  }
+
+  pop() {
+    let popedItem = this.data[this.length - 1];
+    delete this.data[this.length - 1];
+    this.length--;
+
+    return popedItem;
+  }
 }
