@@ -50,7 +50,9 @@ class ArrayDataStructure {
 
 let arr = new ArrayDataStructure();
 
-arr.push('a'); // { 1: 'a' }
-arr.push('b'); // { 1: 'a': 2: 'b' }
-arr.push('c'); // { 1: 'a': 2: 'b', 3: 'c' }
-arr.push('d'); // { 1: 'a': 2: 'b', 3: 'c', 4: 'd' }
+arr.push('a'); // { 0: 'a' }
+arr.push('b'); // { 0: 'a': 1: 'b' }
+arr.push('c'); // { 0: 'a': 1: 'b', 2: 'c' }
+arr.push('d'); // { 0: 'a': 1: 'b', 2: 'c', 3: 'd' }
+
+arr.deleteAtIndex(1) // { 0: 'a', 1: 'c', 2: 'd' }
