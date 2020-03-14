@@ -17,7 +17,6 @@
 class HashTable {
   constructor(size) {
     this.data = new Array(size);
-    this.lastUsedIndex = 0;
   }
 
   _hash(key) {
@@ -29,29 +28,95 @@ class HashTable {
   }
 
   get(key) {
-    const hashedKey = this._hash(key);
-    let hashedKeyInMemory;
+    const address = this._hash(key);
+    const currentBucket = this.data[address];
 
-    for (let i = 0; i < this.lastUsedIndex; i++) {
-      hashedKeyInMemory = this.data[i][0];
+    if (!currentBucket) return undefined;
 
-      if (hashedKeyInMemory === hashedKey) {
-        return this.data[i][1];
+    for (let i = 0; i < currentBucket.length; i++) {
+      if (currentBucket[i][0] === key) {
+        return currentBucket[i][1];
       }
     }
-    return false;
+    return undefined;
   }
 
   set(key, value) {
-    const hashedKey = this._hash(key);
+    const address = this._hash(key);
+    if (!this.data[address]) {
+      this.data[address] = []
+    }
+    this.data[address].push([key, value])
+  }
 
-    this.data[this.lastUsedIndex] = [hashedKey, value];
-    this.lastUsedIndex++;
+  keys() {
+    const keys = [];
+
+    if (!this.data.length) return;
+
+    for (let i = 0; i < this.data.length; i++) {
+      console.log("extracting key for data", this.data[i]);
+      if (this.data[i]) {
+        keys.push(this.data[i][0][0]);
+      }
+    }
+
+    return keys;
   }
 }
 
-// Example
+
+// class HashTableWithOrderedMemory {
+//   constructor(size) {
+//     this.data = new Array(size);
+//     this.lastUsedIndex = 0;
+//   }
+
+//   _hash(key) {
+//     let hash = 0;
+//     for (let i = 0; i < key.length; i++) {
+//       hash = (hash + key.charCodeAt(i) * i) % this.data.length
+//     }
+//     return hash;
+//   }
+
+//   get(key) {
+//     const hashedKey = this._hash(key);
+//     let hashedKeyInMemory;
+
+//     for (let i = 0; i < this.lastUsedIndex; i++) {
+//       hashedKeyInMemory = this.data[i][0];
+
+//       if (hashedKeyInMemory === hashedKey) {
+//         return this.data[i][1];
+//       }
+//     }
+//     return false;
+//   }
+
+//   set(key, value) {
+//     const hashedKey = this._hash(key);
+
+//     this.data[this.lastUsedIndex] = [hashedKey, value, key];
+//     this.lastUsedIndex++;
+//   }
+
+//   keys() {
+//     const keys = [];
+
+//     if (!this.data.length) return;
+
+//     for (let i = 0; i < this.lastUsedIndex; i++) {
+//       keys.push(this.data[i][2]);
+//     }
+
+//     return keys;
+//   }
+// }
+
+// Exampmle
 const myHashTable = new HashTable(50);
 myHashTable.set('grapes', 10000);  // [[23, 1000]]
 myHashTable.set('cherry', 5); // [[23, 1000], [9, 5]]
-myHashTable.get('grapes'); // 1000
+myHashTable.get('grapes'); // 10000
+myHashTable.keys();
