@@ -57,7 +57,13 @@ class HashTable {
     for (let i = 0; i < this.data.length; i++) {
       console.log("extracting key for data", this.data[i]);
       if (this.data[i]) {
-        keys.push(this.data[i][0][0]);
+        if (this.data.length > 1) {
+          for (let j = 0; j < this.data[i].length; j++) {
+            keys.push(this.data[i][j][0])
+          }
+        } else {
+          keys.push(this.data[i][0][0]);
+        }
       }
     }
 
