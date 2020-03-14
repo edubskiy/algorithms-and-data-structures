@@ -71,6 +71,7 @@ class HashTable {
   }
 }
 
+// @deprecated
 
 // class HashTableWithOrderedMemory {
 //   constructor(size) {
@@ -122,7 +123,7 @@ class HashTable {
 
 // Exampmle
 const myHashTable = new HashTable(50);
-myHashTable.set('grapes', 10000);  // [[23, 1000]]
-myHashTable.set('cherry', 5); // [[23, 1000], [9, 5]]
+myHashTable.set('grapes', 10000);  // [ 23: ['grapes', 1000]]
+myHashTable.set('cherry', 5); // [ 23: ['grapes', 1000], 9: ['cherry', 5]]
 myHashTable.get('grapes'); // 10000
-myHashTable.keys();
+myHashTable.keys(); // ['grapes', 'cherry']
