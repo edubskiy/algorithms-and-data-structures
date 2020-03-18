@@ -29,7 +29,6 @@ class LinkedList {
       next: null,
     };
 
-    this.data = {};
     this.tail = this.head;
     this.length = 1;
   }
@@ -60,6 +59,51 @@ class LinkedList {
     return this;
   }
 
+  traverseTo(index) {
+    let counter = 0;
+    let currentNode = this.head;
+    while (counter !== index) {
+      currentNode = currentNode.next;
+      counter++;
+    }
+
+    return currentNode;
+  }
+
+  insertAt(index, value) {
+    if (index >= this.length) {
+      this.append(value);
+    }
+
+    let newNode = {
+      value: value,
+      next: null,
+    };
+    let leader = this.traverseTo(index - 1);
+    let holdingPoiner = leader.next;
+
+    leader.next = newNode;
+    newNode.next = holdingPoiner;
+    this.length++;
+
+    // while (currentNode !== null && i <= index) {
+    //   if (i === index) {
+    //     console.log('inserting node with index', i);
+    //     console.log('current node', currentNode);
+    //     insertNode.next = currentNode;
+    //     currentNode = insertNode;
+    //     // if (currentNode.next === null) {
+    //     //   this.tail = currentNode;
+    //     // }
+    //     // this.length++;
+    //     // return;
+    //   }
+    //   // do smth
+    //   currentNode = currentNode.next;
+    //   i++;
+    // }
+  }
+
   print() {
     const array = [];
     let currentNode = this.head;
@@ -86,3 +130,7 @@ LinkedList {
 }
  */
 myLinkedList.print(); // [ 1, 10, 5, 16 ]
+
+myLinkedList.insertAt(1, 99);
+console.log(myLinkedList);
+console.log(myLinkedList.print());
