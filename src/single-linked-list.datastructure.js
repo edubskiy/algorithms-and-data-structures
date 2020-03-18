@@ -117,16 +117,47 @@ class LinkedList {
   }
 
   reverse() {
-    let i = 0;
-    let nodeList = this.getValues().reverse();
-    let currentNode = this.head;
-
-    while (currentNode) {
-      currentNode.value = nodeList[i];
-      currentNode = currentNode.next;
-      i++;
+    if (!this.head.next) {
+      return this.head;
     }
+
+    let first = this.head;
+    console.log('first ', first);
+    this.tail = this.head;
+    let second = first.next;
+    console.log('second ', second);
+    while (second) {
+      // [99, 10, 5, 16];
+      const temp = second.next; // third => 5
+      second.next = first; // [99, 10, 99, 16];
+      console.log('swapped first ', first, 'in second.next', second.next);
+      first = second; // [10, 10, 99, 16]
+      console.log('swapped second ', second, 'in first', first);
+      second = temp; // [10, 5, 99, 16]
+      console.log('swapped third ', temp, 'in second', second);
+    }
+
+    this.head.next = null;
+    this.head = first;
+
+    return this;
   }
+
+  // reverse() {
+  //   if (this.length === 1) {
+  //     return this.head;
+  //   }
+
+  //   let i = 0;
+  //   let nodeList = this.getValues().reverse();
+  //   let currentNode = this.head;
+
+  //   while (currentNode) {
+  //     currentNode.value = nodeList[i];
+  //     currentNode = currentNode.next;
+  //     i++;
+  //   }
+  // }
 
   getValues() {
     const array = [];
