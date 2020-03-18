@@ -22,11 +22,12 @@
 //   },
 // };
 
-class LinkedList {
+class DoublyLinkedList {
   constructor(value) {
     this.head = {
       value,
       next: null,
+      prev: null,
     };
 
     this.tail = this.head;
@@ -37,8 +38,10 @@ class LinkedList {
     const newNode = {
       value: value,
       next: null,
+      prev: null,
     };
 
+    newNode.prev = this.tail;
     this.tail.next = newNode;
     this.tail = newNode;
 
@@ -51,8 +54,10 @@ class LinkedList {
     const newNode = {
       value: value,
       next: null,
+      prev: null,
     };
     newNode.next = this.head;
+    this.head.prev = newNode;
     this.head = newNode;
     this.length++;
 
@@ -89,12 +94,15 @@ class LinkedList {
     let newNode = {
       value: value,
       next: null,
+      prev: null,
     };
     let leader = this.traverseTo(index - 1);
-    let holdingPoiner = leader.next;
+    let follower = leader.next;
 
     leader.next = newNode;
-    newNode.next = holdingPoiner;
+    newNode.prev = leader;
+    newNode.next = follower;
+    follower.prev = newNode;
     this.length++;
 
     return this;
@@ -108,9 +116,11 @@ class LinkedList {
     }
     let leader = this.traverseTo(index - 1);
     let nodeToRemove = leader.next;
-    let holdingPoiner = nodeToRemove.next;
+    let holdingPointer = nodeToRemove.next;
 
-    leader.next = holdingPoiner;
+    leader.next = holdingPointer;
+    holdingPointer.prev = leader;
+
     this.length--;
 
     return this;
@@ -128,11 +138,10 @@ class LinkedList {
   }
 }
 
-const myLinkedList = new LinkedList(10);
+const myLinkedList = new DoublyLinkedList(10);
 myLinkedList.append(5);
 myLinkedList.append(16);
 myLinkedList.prepend(1);
-// console.log(myLinkedList);
 /**
 LinkedList {
   head: { value: 1, next: { value: 10, next: [Object] } },
@@ -142,5 +151,7 @@ LinkedList {
 }
  */
 myLinkedList.insertAt(1, 99); // [ 1, 99, 10, 5, 16 ]
-myLinkedList.removeAt(0); // [99, 10, 5, 16];
+myLinkedList.removeAt(1); // [1, 10, 5, 16];
+console.log(myLinkedList);
+
 console.log(myLinkedList.getValues());
