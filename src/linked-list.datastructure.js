@@ -91,9 +91,11 @@ class LinkedList {
 
   removeAt(index) {
     let leader = this.traverseTo(index - 1);
-    let holdingPoiner = leader.next.next;
+    let nodeToRemove = leader.next;
+    let holdingPoiner = nodeToRemove.next;
 
     leader.next = holdingPoiner;
+    this.length--;
 
     return this;
   }
