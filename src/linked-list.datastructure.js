@@ -85,6 +85,8 @@ class LinkedList {
     leader.next = newNode;
     newNode.next = holdingPoiner;
     this.length++;
+
+    return this;
   }
 
   print() {
@@ -113,7 +115,6 @@ LinkedList {
 }
  */
 myLinkedList.print(); // [ 1, 10, 5, 16 ]
-
 myLinkedList.insertAt(1, 99);
 console.log(myLinkedList);
 console.log(myLinkedList.print());
