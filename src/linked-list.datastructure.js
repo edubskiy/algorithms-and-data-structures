@@ -59,13 +59,24 @@ class LinkedList {
 
     return this;
   }
+
+  print() {
+    const array = [];
+    let currentNode = this.head;
+    while (currentNode !== null) {
+      array.push(currentNode.value);
+      currentNode = currentNode.next;
+    }
+
+    return array;
+  }
 }
 
 const myLinkedList = new LinkedList(10);
 myLinkedList.append(5);
 myLinkedList.append(16);
 myLinkedList.prepend(1);
-console.log(myLinkedList);
+// console.log(myLinkedList);
 /**
 LinkedList {
   head: { value: 1, next: { value: 10, next: [Object] } },
@@ -74,3 +85,4 @@ LinkedList {
   length: 4
 }
  */
+myLinkedList.print(); // [ 1, 10, 5, 16 ]
