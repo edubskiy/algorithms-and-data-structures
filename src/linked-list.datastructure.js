@@ -89,6 +89,15 @@ class LinkedList {
     return this;
   }
 
+  removeAt(index) {
+    let leader = this.traverseTo(index - 1);
+    let holdingPoiner = leader.next.next;
+
+    leader.next = holdingPoiner;
+
+    return this;
+  }
+
   print() {
     const array = [];
     let currentNode = this.head;
@@ -116,5 +125,6 @@ LinkedList {
  */
 myLinkedList.print(); // [ 1, 10, 5, 16 ]
 myLinkedList.insertAt(1, 99);
+myLinkedList.removeAt(2);
 console.log(myLinkedList);
 console.log(myLinkedList.print());
