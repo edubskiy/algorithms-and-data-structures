@@ -60,8 +60,13 @@ class LinkedList {
   }
 
   traverseTo(index) {
+    if (index === 0) {
+      return this.head;
+    }
+
     let counter = 0;
     let currentNode = this.head;
+
     while (counter !== index) {
       currentNode = currentNode.next;
       counter++;
@@ -73,6 +78,12 @@ class LinkedList {
   insertAt(index, value) {
     if (index >= this.length) {
       this.append(value);
+    }
+
+    if (index === 0) {
+      this.prepend(value);
+
+      return this;
     }
 
     let newNode = {
@@ -90,6 +101,11 @@ class LinkedList {
   }
 
   removeAt(index) {
+    if (index === 0) {
+      this.head = this.head.next;
+
+      return this;
+    }
     let leader = this.traverseTo(index - 1);
     let nodeToRemove = leader.next;
     let holdingPoiner = nodeToRemove.next;
@@ -100,7 +116,7 @@ class LinkedList {
     return this;
   }
 
-  print() {
+  getValues() {
     const array = [];
     let currentNode = this.head;
     while (currentNode !== null) {
@@ -125,8 +141,6 @@ LinkedList {
   length: 4
 }
  */
-myLinkedList.print(); // [ 1, 10, 5, 16 ]
-myLinkedList.insertAt(1, 99);
-myLinkedList.removeAt(2);
-console.log(myLinkedList);
-console.log(myLinkedList.print());
+myLinkedList.insertAt(1, 99); // [ 1, 99, 10, 5, 16 ]
+myLinkedList.removeAt(0); // [99, 10, 5, 16];
+console.log(myLinkedList.getValues());
