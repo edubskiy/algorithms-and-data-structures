@@ -85,23 +85,6 @@ class LinkedList {
     leader.next = newNode;
     newNode.next = holdingPoiner;
     this.length++;
-
-    // while (currentNode !== null && i <= index) {
-    //   if (i === index) {
-    //     console.log('inserting node with index', i);
-    //     console.log('current node', currentNode);
-    //     insertNode.next = currentNode;
-    //     currentNode = insertNode;
-    //     // if (currentNode.next === null) {
-    //     //   this.tail = currentNode;
-    //     // }
-    //     // this.length++;
-    //     // return;
-    //   }
-    //   // do smth
-    //   currentNode = currentNode.next;
-    //   i++;
-    // }
   }
 
   print() {
