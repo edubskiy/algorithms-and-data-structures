@@ -116,47 +116,55 @@ class LinkedList {
     return this;
   }
 
+  // Iterative solution
+  // We iterate through the list once, changin the next pointer of each node
+  // to the previous node. The order of operations is important: we copy node.next
+  // into tmp before setting node.next to previous. Otherwise when we step forward
+  // at the end of the list we'd actually step back to the previous node
   reverse() {
     if (!this.head.next) {
       return this.head;
     }
 
-    let first = this.head;
-    console.log('first ', first);
+    let node = this.head,
+      previous,
+      tmp;
+
     this.tail = this.head;
-    let second = first.next;
-    console.log('second ', second);
-    while (second) {
-      // [99, 10, 5, 16];
-      const temp = second.next; // third => 5
-      second.next = first; // [99, 10, 99, 16];
-      console.log('swapped first ', first, 'in second.next', second.next);
-      first = second; // [10, 10, 99, 16]
-      console.log('swapped second ', second, 'in first', first);
-      second = temp; // [10, 5, 99, 16]
-      console.log('swapped third ', temp, 'in second', second);
+
+    while (node) {
+      // save next before we overwrite node.next
+      tmp = node.next;
+
+      // reverse pointer
+      node.next = previous;
+
+      // step forward in the linked list
+      previous = node;
+      node = tmp;
     }
 
     this.head.next = null;
-    this.head = first;
+    this.head = previous;
 
     return this;
   }
 
-  // reverse() {
-  //   if (this.length === 1) {
-  //     return this.head;
-  //   }
+  // @deprecated O(n^2) reverse values
+  // reverseValues() {
+  // if (this.length === 1) {
+  // return this.head;
+  // }
 
-  //   let i = 0;
-  //   let nodeList = this.getValues().reverse();
-  //   let currentNode = this.head;
+  // let i = 0;
+  // let nodeList = this.getValues().reverse();
+  // let currentNode = this.head;
 
-  //   while (currentNode) {
-  //     currentNode.value = nodeList[i];
-  //     currentNode = currentNode.next;
-  //     i++;
-  //   }
+  // while (currentNode) {
+  // currentNode.value = nodeList[i];
+  // currentNode = currentNode.next;
+  // i++;
+  // }
   // }
 
   getValues() {
@@ -172,8 +180,8 @@ class LinkedList {
 }
 
 const myLinkedList = new LinkedList(10);
-myLinkedList.append(5);
 myLinkedList.append(16);
+myLinkedList.append(88);
 myLinkedList.prepend(1);
 // console.log(myLinkedList);
 /**
@@ -184,8 +192,28 @@ LinkedList {
   length: 4
 }
  */
-myLinkedList.insertAt(1, 99); // [ 1, 99, 10, 5, 16 ]
-myLinkedList.removeAt(0); // [99, 10, 5, 16];
+// myLinkedList.insertAt(1, 99);
+// myLinkedList.removeAt(0);
 console.log(myLinkedList.getValues());
 myLinkedList.reverse();
+// Debug output
+// {value: 10, next: {…}}
+// undefined
+// {value: 1, next: undefined}
+// {value: 10, next: {…}}
+// {value: 16, next: {…}}value: 16next: {value: 10, next: {…}}__proto__: Object
+// {value: 1, next: undefined}
+// {value: 10, next: {…}}
+// {value: 16, next: {…}}
+// {value: 88, next: null}value: 88next: {value: 16, next: {…}}__proto__: Object
+// {value: 10, next: {…}}
+// {value: 16, next: {…}}
+// {value: 88, next: null}
+// null
+// {value: 16, next: {…}}
+// {value: 88, next: {…}}value: 88next: {value: 16, next: {…}}__proto__: Object
+// null
+
 console.log(myLinkedList.getValues());
+// (4) [88, 16, 10, 1]
+console.log(myLinkedList);
