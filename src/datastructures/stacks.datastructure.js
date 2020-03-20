@@ -8,8 +8,7 @@ class Node {
 
 class StackBuiltWithArray {
   constructor() {
-    this.top = [];
-    this.bottom = [];
+    this.data = [];
     this.length = 0;
   }
 
@@ -19,27 +18,13 @@ class StackBuiltWithArray {
 
   push(value) {
     const newNode = new Node(value);
-
-    if (!this.bottom) {
-      this.bottom = newNode;
-      this.top = this.bottom;
-    } else {
-      this.top.push(newNode);
-    }
+    this.top.push(newNode);
     this.length++;
 
     return this;
   }
 
   pop() {
-    if (!this.top) {
-      return null;
-    }
-
-    if (this.bottom === this.top) {
-      this.bottom = null;
-    }
-
     const popNode = this.top.pop();
     this.length--;
 
