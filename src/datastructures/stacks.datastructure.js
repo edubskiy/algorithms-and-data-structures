@@ -6,6 +6,51 @@ class Node {
   }
 }
 
+class StackBuiltWithArray {
+  constructor() {
+    this.top = [];
+    this.bottom = [];
+    this.length = 0;
+  }
+
+  peek() {
+    return this.top;
+  }
+
+  push(value) {
+    const newNode = new Node(value);
+
+    if (!this.bottom) {
+      this.bottom = newNode;
+      this.top = this.bottom;
+    } else {
+      this.top.push(newNode);
+    }
+    this.length++;
+
+    return this;
+  }
+
+  pop() {
+    if (!this.top) {
+      return null;
+    }
+
+    if (this.bottom === this.top) {
+      this.bottom = null;
+    }
+
+    const popNode = this.top.pop();
+    this.length--;
+
+    return this;
+  }
+
+  isEmpty() {
+    return this.length === 0;
+  }
+}
+
 class Stack {
   constructor() {
     this.top = null;
@@ -58,14 +103,14 @@ class Stack {
 // Discord
 // Udemy
 // google
-var stack = new Stack();
+var stack = new StackBuiltWithArray();
 
 stack.push('google');
 stack.push('Udemy');
 stack.push('Discord');
 stack.pop(); // Discord
-stack.pop(); // Udemy
-stack.pop(); // Google
+// stack.pop(); // Udemy
+// stack.pop(); // Google
 // not this.top = null and this.bottom = null
 
 console.log(stack);
