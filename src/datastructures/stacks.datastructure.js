@@ -13,12 +13,11 @@ class StackBuiltWithArray {
   }
 
   peek() {
-    return this.top;
+    return this.data[this.data.length - 1];
   }
 
   push(value) {
-    const newNode = new Node(value);
-    this.top.push(newNode);
+    this.top.push(value);
     this.length++;
 
     return this;
