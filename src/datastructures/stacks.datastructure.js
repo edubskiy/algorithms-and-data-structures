@@ -36,6 +36,7 @@ class StackBuiltWithArray {
   }
 }
 
+// On top of LinkedLists
 class Stack {
   constructor() {
     this.top = null;
