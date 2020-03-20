@@ -19,12 +19,12 @@ function maxChar(str) {
   let maxChar = '';
   let maxCount = 0;
 
-  Object.keys(hash).forEach(char => {
+  for (let char in hash) {
     if (hash[char] > maxCount) {
       maxCount += hash[char];
       maxChar = char;
     }
-  });
+  }
 
   return maxChar;
 }
