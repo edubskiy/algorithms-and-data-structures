@@ -15,8 +15,6 @@ function chunk(array, size) {
   for (let i = 0; i < chunksCount; i++) {
     chunkedArray.push(array.slice(size * i, size * i + size)); // i = 1 size = 2
   }
-  console.log('chunk');
-  console.log(chunkedArray);
 
   return chunkedArray;
 }
