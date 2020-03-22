@@ -27,7 +27,9 @@ class Queue {
       return newNode;
     }
 
+    // Update pointer of last node to point to a new node
     this.last.next = newNode;
+    // Shift last node position so it will point to a new node
     this.last = newNode;
 
     this.length++;
@@ -41,21 +43,12 @@ class Queue {
     }
 
     if (this.length === 1) {
-      this.first = null;
-      this.last = null;
-      this.length = 0;
-
-      return this.first;
-    }
-
-    if (this.first === this.last) {
       this.last = null;
     }
 
     let dequeueNode = this.first;
 
     this.first = this.first.next;
-
     this.length--;
 
     return dequeueNode;
@@ -71,7 +64,7 @@ myQueue.enqueue('Joy');
 myQueue.enqueue('Matt');
 myQueue.enqueue('Pavel');
 myQueue.enqueue('Samir');
-myQueue.dequeue();
+// myQueue.dequeue();
 console.log(myQueue);
 
 // Joy
