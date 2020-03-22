@@ -6,6 +6,36 @@ class Node {
   }
 }
 
+class StackBuiltWithArray {
+  constructor() {
+    this.data = [];
+    this.length = 0;
+  }
+
+  peek() {
+    return this.data[this.data.length - 1];
+  }
+
+  push(value) {
+    this.top.push(value);
+    this.length++;
+
+    return this;
+  }
+
+  pop() {
+    const popNode = this.top.pop();
+    this.length--;
+
+    return this;
+  }
+
+  isEmpty() {
+    return this.length === 0;
+  }
+}
+
+// On top of LinkedLists
 class Stack {
   constructor() {
     this.top = null;
@@ -58,14 +88,14 @@ class Stack {
 // Discord
 // Udemy
 // google
-var stack = new Stack();
+var stack = new StackBuiltWithArray();
 
 stack.push('google');
 stack.push('Udemy');
 stack.push('Discord');
 stack.pop(); // Discord
-stack.pop(); // Udemy
-stack.pop(); // Google
+// stack.pop(); // Udemy
+// stack.pop(); // Google
 // not this.top = null and this.bottom = null
 
 console.log(stack);
