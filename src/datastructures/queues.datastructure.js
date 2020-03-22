@@ -49,7 +49,7 @@ class Queue {
     }
 
     if (this.first === this.last) {
-      this.last === null;
+      this.last = null;
     }
 
     let dequeueNode = this.first;
