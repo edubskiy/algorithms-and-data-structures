@@ -30,15 +30,14 @@ function anagrams(stringA, stringB) {
     stringA = convertToLowerCaseCharSequence(stringA);
     stringB = convertToLowerCaseCharSequence(stringB);
     
-    console.log(stringA);
-    console.log(stringB);
-    
+    if (stringA.length !== stringB.length) {
+      return false;
+    }
 
     let hashA = buildHashOfStringChars(stringA);
-    let hashB = buildHashOfStringChars(stringB);
-    let compareFrom = stringA.length > stringB.length ? stringA : stringB;
+    let hashB = buildHashOfStringChars(stringB);    
 
-    for (char of compareFrom) {
+    for (char of stringA) {
       if (hashA[char] !== hashB[char]) {
         return false;
       }
