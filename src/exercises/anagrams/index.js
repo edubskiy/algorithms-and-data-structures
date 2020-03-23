@@ -8,42 +8,55 @@
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 //   anagrams('Hi there', 'Bye there') --> False
 
-function convertToLowerCaseCharSequence(str) {
-  return str.toLowerCase().replace(/ /g, '').match(/(\w+)/g).join('');
-}
-
-function buildHashOfStringChars(str) {
-  let hash = {};
-
-  for (const char of str) {
-    if ( ! hash[char]) {
-      hash[char] = 0;
-    } else {
-      hash[char]++;
-    }
-  }
-
-  return hash
+function toSortedCharSequence(str) {
+  return str.replace(/[^\w]/g, '').toLowerCase().split('').sort().join('');
 }
 
 function anagrams(stringA, stringB) {
-    stringA = convertToLowerCaseCharSequence(stringA);
-    stringB = convertToLowerCaseCharSequence(stringB);
-    
-    if (stringA.length !== stringB.length) {
-      return false;
-    }
-
-    let hashA = buildHashOfStringChars(stringA);
-    let hashB = buildHashOfStringChars(stringB);    
-
-    for (char of stringA) {
-      if (hashA[char] !== hashB[char]) {
-        return false;
-      }
-    }
-
-    return true;
+  return toSortedCharSequence(stringA) === toSortedCharSequence(stringB);
 }
 
 module.exports = anagrams;
+
+// function anagrams(stringA, stringB) {
+//   stringA = convertToLowerCaseCharSequence(stringA);
+//   stringB = convertToLowerCaseCharSequence(stringB);
+
+//   if (stringA.length !== stringB.length) {
+//     return false;
+//   }
+
+//   let hashA = buildHashOfStringChars(stringA);
+//   let hashB = buildHashOfStringChars(stringB);
+
+//   for (char of stringA) {
+//     if (hashA[char] !== hashB[char]) {
+//       return false;
+//     }
+//   }
+
+//   return true;
+// }
+
+// function convertToLowerCaseCharSequence(str) {
+//   return str
+//     .toLowerCase()
+//     .replace(/ /g, '')
+//     .match(/(\w+)/g)
+//     .join('');
+// }
+
+// function buildHashOfStringChars(str) {
+//   let hash = {};
+
+//   for (const char of str) {
+//     if (!hash[char]) {
+//       hash[char] = 0;
+//     } else {
+//       hash[char]++;
+//     }
+//   }
+
+//   return hash;
+// }
+
