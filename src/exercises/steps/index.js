@@ -17,24 +17,41 @@
 //       '### '
 //       '####'
 
-function buildStepMessageFor(level, charCountInLine) {
-  let step = '';
-  for (let i = 1; i <= charCountInLine; i++) {
-    if (i <= level) {
-      step = step + '#';
-    } else {
-      step = step + ' ';
-    }
-  }
-  
-  return step;
-}
+// Recursive solution
 
-function steps(n) {
-  stepMessage = '';
-  for (let i = 1; i <= n; i++) {
-    console.log(buildStepMessageFor(i, n));
+function steps(n, row = 0, stairs = '') {
+  if (n === row) {
+    return;
   }
+
+  if (n === stairs.length) {
+    console.log(stairs);
+    return steps(n, row + 1);
+  }
+
+  let add = stairs.length <= row ? '#' : ' ';
+
+  return steps(n, row, stairs + add);
 }
 
 module.exports = steps;
+
+// function buildStepMessageFor(level, charCountInLine) {
+//   let step = '';
+//   for (let i = 1; i <= charCountInLine; i++) {
+//     if (i <= level) {
+//       step = step + '#';
+//     } else {
+//       step = step + ' ';
+//     }
+//   }
+
+//   return step;
+// }
+
+// function steps(n) {
+//   stepMessage = '';
+//   for (let i = 1; i <= n; i++) {
+//     console.log(buildStepMessageFor(i, n));
+//   }
+// }
