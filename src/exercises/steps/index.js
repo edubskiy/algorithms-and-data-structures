@@ -17,6 +17,24 @@
 //       '### '
 //       '####'
 
-function steps(n) {}
+function buildStepMessageFor(level, charCountInLine) {
+  let step = '';
+  for (let i = 1; i <= charCountInLine; i++) {
+    if (i <= level) {
+      step = step + '#';
+    } else {
+      step = step + ' ';
+    }
+  }
+  
+  return step;
+}
+
+function steps(n) {
+  stepMessage = '';
+  for (let i = 1; i <= n; i++) {
+    console.log(buildStepMessageFor(i, n));
+  }
+}
 
 module.exports = steps;
