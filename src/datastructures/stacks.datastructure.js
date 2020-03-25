@@ -17,14 +17,14 @@ class StackBuiltWithArray {
   }
 
   push(value) {
-    this.top.push(value);
+    this.data.push(value);
     this.length++;
 
     return this;
   }
 
   pop() {
-    const popNode = this.top.pop();
+    const popNode = this.data.pop();
     this.length--;
 
     return this;
@@ -99,3 +99,35 @@ stack.pop(); // Discord
 // not this.top = null and this.bottom = null
 
 console.log(stack);
+
+class Queue {
+  constructor() {
+    this.stack = new StackBuiltWithArray();
+  }
+
+  enqueueu(value) {
+    this.stack.push(value);
+  }
+
+  dequeue() {
+    const dequeueNode = this.stack.data[0];
+    let i = 0;
+    for (let e of this.stack.data) {
+      this.stack.data[i] = this.stack.data[i + 1];
+      i++;
+    }
+
+    this.stack.pop();
+    this.stack.length--;
+
+    return dequeueNode;
+  }
+}
+
+let queue = new Queue();
+queue.enqueueu('first');
+queue.enqueueu('second');
+queue.enqueueu('third');
+console.log(queue.dequeue());
+console.log(queue.dequeue());
+console.log(queue);
