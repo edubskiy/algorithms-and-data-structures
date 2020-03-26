@@ -17,5 +17,6 @@
  - Anagrams
  - FizzBuzz
  - Palindromes
+ - Steps
  - ... a lot more
  
