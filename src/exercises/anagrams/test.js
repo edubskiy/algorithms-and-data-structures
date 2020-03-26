@@ -5,7 +5,7 @@ test('anagrams function exists', () => {
 });
 
 test('"hello" is an anagram of "llohe"', () => {
-  expect(anagrams('hello', 'llohe')).toBeTruthy();
+  expect(anagrams('hello!!!!!!  !!! !!!! aaaBBBccc  ddd', 'llohe !!!!  cccbBbaaa ddd  ')).toBeTruthy();
 });
 
 test('"Whoa! Hi!" is an anagram of "Hi! Whoa!"', () => {
