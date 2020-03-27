@@ -14,7 +14,7 @@
 //       ' ### '
 //       '#####'
 
-// Recursive solution
+// Recursive solution #2
 function pyramid(n, row = 0, column = 0, stairMessage = '') {
   if (n === row) {
     return;
@@ -42,6 +42,7 @@ function pyramid(n, row = 0, column = 0, stairMessage = '') {
 
 module.exports = pyramid;
 
+// Iterative solution #1
 
 // function pyramid(n) {
 //   let columnCount = n * 2 - 1;
