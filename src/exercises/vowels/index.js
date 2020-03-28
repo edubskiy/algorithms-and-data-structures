@@ -9,8 +9,8 @@
 
 
 function vowels(str) {
-  pattern = /[a,e,i,o,u]/g;
-  let matches = str.toLowerCase().match(pattern);
+  pattern = /[aeiou]/gi;
+  let matches = str.match(pattern);
   
   return matches && matches.length || 0;
 }
