@@ -18,5 +18,6 @@
  - FizzBuzz
  - Palindromes
  - Steps
+ - Vowels
  - ... a lot more
  
