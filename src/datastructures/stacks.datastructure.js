@@ -1,4 +1,13 @@
-// Stacks
+// Stacks 
+
+// pros:
+// Fast operations
+// Fast peek
+// Ordered
+
+// cons:
+// Slow look up
+
 class Node {
   constructor(value) {
     this.value = value;
