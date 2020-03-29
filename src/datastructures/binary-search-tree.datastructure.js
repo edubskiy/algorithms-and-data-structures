@@ -45,17 +45,13 @@ class BinarySearchTree {
 
   lookup(value) {
     let node = this.root;
-    let result;
+    let result = false;
 
     while (node) {
       if (node.value > value) {
-        if (node.left) {
-          node = node.left;
-        }
+        node = node.left ? node.left : null;
       } else if (node.value < value) {
-        if (node.right) {
-          node = node.right;
-        } 
+        node = node.right ? node.right : null;
       } else if (node.value === value) {
         result = node;
         node = null;
@@ -79,4 +75,4 @@ tree.insert(170);
 tree.insert(15);
 tree.insert(1);
 
-console.log(tree.lookup(4));
+console.log(tree.lookup(171));
