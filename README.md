@@ -19,5 +19,6 @@
  - Palindromes
  - Steps
  - Vowels
+ - Spiral Matrix
  - ... a lot more
  
