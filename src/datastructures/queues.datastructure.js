@@ -5,6 +5,17 @@ class Node {
   }
 }
 
+// Queues 
+
+// pros:
+// Fast operations
+// Fast peek
+// Ordered
+
+// cons:
+// Slow look up
+
+
 class Queue {
   constructor() {
     this.first = null;
