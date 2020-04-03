@@ -20,5 +20,6 @@
  - Steps
  - Vowels
  - Spiral Matrix
+ - Fibonacci
  - ... a lot more
  
