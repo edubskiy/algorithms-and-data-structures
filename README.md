@@ -21,5 +21,6 @@
  - Vowels
  - Spiral Matrix
  - Fibonacci
+ - Weave
  - ... a lot more
  
