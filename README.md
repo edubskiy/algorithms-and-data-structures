@@ -22,5 +22,6 @@
  - Spiral Matrix
  - Fibonacci
  - Weave
+ - Validate
  - ... a lot more
  
