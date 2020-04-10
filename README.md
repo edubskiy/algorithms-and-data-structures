@@ -23,5 +23,6 @@
  - Fibonacci
  - Weave
  - Validate
+ - MidPoint
  - ... a lot more
  
