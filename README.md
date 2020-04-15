@@ -25,5 +25,6 @@
  - Validate
  - MidPoint
  - Levelwidth
+ - FromLast
  - ... a lot more
  
