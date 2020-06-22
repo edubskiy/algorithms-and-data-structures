@@ -8,6 +8,23 @@
 // Example:
 //   fib(4) === 3
 
-function fib(n) {}
+// Iterative solution
+function fib(n) {
+  let newFib = 0;
+  let fibs = [];
+  for (i = 0; i < n; i++) {
+    if (!fibs.length) {
+      fibs.push(newFib); // 0
+      newFib += 1;
+      fibs.push(newFib); // 1
+    } else {
+      // i = 1
+      newFib = fibs[i] + fibs[i - 1];
+      fibs.push(newFib); // 1
+    }
+  }
+
+  return newFib;
+}
 
 module.exports = fib;
