@@ -22,19 +22,6 @@ class Queue {
 
   add(record) {
     this.stack1.push(record); // [1,2,3]
-    // if (!this.stack1.peek()) {
-    //   this.stack1.push(record); // [0]
-    //   return;
-    // }
-
-    // this.stack2 = new Stack();
-    // this.stack2.push(record);
-
-    // while (this.stack1.peek()) {
-    //   this.stack2.push(this.stack1.pop()); // [2, 1, 0]
-    // }
-
-    // this.stack1 = this.stack2;
   }
 
   remove() {
@@ -69,11 +56,5 @@ class Queue {
     return record;
   }
 }
-
-const q = new Queue();
-q.add(1);
-q.add(2);
-q.add(3);
-console.log(q);
 
 module.exports = Queue;
