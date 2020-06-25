@@ -31,21 +31,25 @@ class LinkedList {
   }
 
   getFirst() {
-    return this.head;
+    return this.getAt(0);
   }
 
   getLast() {
-    if (!this.head) {
-      return null;
-    }
+    return this.getAt(this.size() - 1);
 
-    let node = this.head;
+    // OR LONGER IMPLEMENTATION
 
-    while (node.next) {
-      node = node.next;
-    }
+    // if (!this.head) {
+    //   return null;
+    // }
 
-    return node;
+    // let node = this.head;
+
+    // while (node.next) {
+    //   node = node.next;
+    // }
+
+    // return node;
   }
 
   clear() {
