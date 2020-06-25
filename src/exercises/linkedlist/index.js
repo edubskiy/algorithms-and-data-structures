@@ -37,7 +37,8 @@ class LinkedList {
   getLast() {
     return this.getAt(this.size() - 1);
 
-    // OR LONGER IMPLEMENTATION
+    // OR LONGER IMPLEMENTATION (this implementation below 100%
+    // just uncomment and comment above
 
     // if (!this.head) {
     //   return null;
@@ -143,6 +144,18 @@ class LinkedList {
     const previous = this.getAt(index - 1) || this.getLast();
     const node = new Node(data, previous.next);
     previous.next = node;
+  }
+
+  forEach(fn) {
+    let node = this.head;
+    let counter = 0;
+
+    while (node) {
+      fn.call(this, node, counter);
+      node = node.next;
+      q;
+      counter++;
+    }
   }
 }
 
