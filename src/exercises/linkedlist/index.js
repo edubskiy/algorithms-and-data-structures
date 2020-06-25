@@ -38,6 +38,10 @@ class LinkedList {
   }
 
   getLast() {
+    if (!this.head) {
+      return null;
+    }
+
     let node = this.head;
 
     while (node.next) {
@@ -60,11 +64,11 @@ class LinkedList {
   }
 
   removeLast() {
-    if (this.size() === 0) {
+    if (!this.head) {
       return;
     }
 
-    if (this.size() === 1) {
+    if (!this.head.next) {
       this.head = null;
       return;
     }
@@ -88,6 +92,21 @@ class LinkedList {
     } else {
       this.head = newNode;
     }
+  }
+
+  getAt(index) {
+    let counter = 0;
+    let node = this.head;
+
+    while (node) {
+      if (index === counter) {
+        return node;
+      }
+      node = node.next;
+      counter++;
+    }
+
+    return null;
   }
 }
 
