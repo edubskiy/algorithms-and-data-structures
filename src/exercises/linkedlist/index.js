@@ -72,15 +72,35 @@ class LinkedList {
     let node = this.head.next;
     let previous = this.head;
 
-    while (node) {
-      if (!node.next) {
-        previous.next = null;
-        return;
-      }
-
+    while (node.next) {
       previous = node;
       node = node.next;
     }
+    previous.next = null;
+  }
+
+  insertLast(data) {
+    const newNode = new Node(data);
+
+    if (this.size() === 0) {
+      this.head = newNode;
+      return;
+    }
+
+    if (this.size() === 1) {
+      this.head.next = newNode;
+      return;
+    }
+
+    let previous = this.head;
+    let node = this.head.next;
+
+    while (node.next) {
+      previous = node;
+      node = node.next;
+    }
+
+    node.next = newNode;
   }
 }
 
