@@ -153,7 +153,6 @@ class LinkedList {
     while (node) {
       fn.call(this, node, counter);
       node = node.next;
-      q;
       counter++;
     }
   }
