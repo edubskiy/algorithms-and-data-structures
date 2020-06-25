@@ -20,6 +20,18 @@ class LinkedList {
 
     return node;
   }
+
+  size() {
+    let counter = 0;
+    let node = this.head;
+
+    while (node) {
+      node = node.next;
+      counter++;
+    }
+
+    return counter;
+  }
 }
 
 module.exports = { Node, LinkedList };
