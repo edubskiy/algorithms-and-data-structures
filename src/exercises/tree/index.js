@@ -44,6 +44,21 @@ class Tree {
       }
     }
   }
+
+  traverseDF(fn) {
+    let treeNodes = [];
+    let node;
+
+    treeNodes.push(this.root);
+
+    while (treeNodes.length) {
+      node = treeNodes.shift();
+      fn.call(this, node);
+      if (node.children && node.children.length) {
+        treeNodes.unshift(...node.children);
+      }
+    }
+  }
 }
 
 module.exports = { Tree, Node };
