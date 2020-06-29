@@ -36,6 +36,26 @@ class Node {
       node.insert(data, node.right);
     }
   }
+
+  contains(data, node = null) {
+    node = node || this;
+
+    if (data === node.data) {
+      return node;
+    } else if (data < node.data) {
+      if (!node.left) {
+        return null;
+      }
+      return node.contains(data, node.left);
+    } else if (data > node.data) {
+      if (!node.right) {
+        return null;
+      }
+      return node.contains(data, node.right);
+    }
+
+    return null;
+  }
 }
 
 module.exports = Node;
