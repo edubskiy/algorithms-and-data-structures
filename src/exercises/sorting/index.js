@@ -34,9 +34,6 @@ function selectionSort(arr) {
     }
   }
 
-  console.log('result array');
-  console.log(arr);
-
   return arr;
 }
 
